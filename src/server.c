@@ -6,7 +6,7 @@
 /*   By: scheragh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 12:48:18 by scheragh          #+#    #+#             */
-/*   Updated: 2025/07/04 13:21:00 by scheragh         ###   ########.fr       */
+/*   Updated: 2025/07/04 14:26:24 by scheragh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -14,10 +14,21 @@
 
 int	main(void)
 {
-	ft_printf("%d\n", getpid());
-	while (42)
+	int		pid;
+
+	pid = getpid();
+	ft_printf("%d\n", pid);
+	if (argc == 1)
 	{
-		pause();
+		while (argc == 1)
+		{
+			signal(SIGUSR1, ft_btoa);
+			signal(SIGUSR2, ft_btoa);
+		}
+	}
+	else
+	{
+		ft_printf("Error\n", pid);
 	}
 	return (EXIT_SUCCESS);
 }
