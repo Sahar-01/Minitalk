@@ -11,6 +11,21 @@
 /* ************************************************************************** */
 #include "minitalk.h"
 
+static	void	ft_send_sig(int pid, char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == '1')
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		i++;
+		usleep(50);
+	}
+}
 int	main(void)
 {
 	return (EXIT_SUCCESS);

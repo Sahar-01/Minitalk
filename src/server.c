@@ -11,7 +11,10 @@
 /* ************************************************************************** */
 #include "minitalk.h"
 #include "ft_printf.h"
+void	ft_handle_sig(int sig)
+{
 
+}
 int	main(void)
 {
 	int		pid;
@@ -22,13 +25,14 @@ int	main(void)
 	{
 		while (argc == 1)
 		{
-			signal(SIGUSR1, ft_btoa);
-			signal(SIGUSR2, ft_btoa);
+			signal(SIGUSR1, ft_handle_sig);
+			signal(SIGUSR2, ft_handle_sig);
 		}
 	}
 	else
 	{
 		ft_printf("Error\n", pid);
+		return (1);
 	}
-	return (EXIT_SUCCESS);
+	return (0);
 }
